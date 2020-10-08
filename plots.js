@@ -118,9 +118,10 @@ function buildCharts(sample) {
         y: sample_values,
         text: otu_labels,
         mode: "markers",
-        marker: {
+        arker: {
           size: sample_values,
-          color: otu_ids
+          color: [1,2,3,4,5,6,7,8,9,10],
+          colorscale: "Viridis" 
         }
       }
     ];
@@ -153,11 +154,11 @@ function buildCharts(sample) {
        gauge: {
          axis: { range: [null, 10]},
          steps: [
-           { range: [0,2], color: "red"},
-           { range: [2,4], color: "orange"},
-           { range: [4,6], color: "yellow"},
-           { range: [6,8], color: "lightgreen"},
-           { range: [8,10], color: "green"}
+          { range: [0,2], color: "#440154"},
+          { range: [2,4], color: "#31688e"},
+          { range: [4,6], color: "#21918c"},
+          { range: [6,8], color: "#35b779"},
+          { range: [8,10], color: "#90d743"}
           ],
           bar: {color: "black"}
        }
