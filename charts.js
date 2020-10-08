@@ -108,8 +108,8 @@ function buildCharts(sample) {
     title: "Top 10 Bacteria Cultures Found", color: "white",
     xaxis: { title: "Sample Amount", color: "white" },
     yaxis: { autorange: "reversed", color: "white" },
-    plot_bgcolor:"black",
-    paper_bgcolor:"rgba(0,0,0,0)"
+    plot_bgcolor:"#181B2E",
+    paper_bgcolor:"#181B2E"
   };
 
     // 10. Use Plotly to plot the data with the layout. 
@@ -136,8 +136,8 @@ function buildCharts(sample) {
         },
         automargin: true,
         hovermode: "closest",
-        plot_bgcolor:"black",
-        paper_bgcolor:"rgba(0,0,0,0)"
+        plot_bgcolor:"#181B2E",
+        paper_bgcolor:"#181B2E"
     };
   
   // Del2.3. Use Plotly to plot the data with the layout.
@@ -171,8 +171,8 @@ function buildCharts(sample) {
     width: 500,
     height: 400,
     margin: { t: 40, r: 40, l: 40, b: 40 },
-    plot_bgcolor:"black",
-    paper_bgcolor:"rgba(0,0,0,0)"
+    plot_bgcolor:"#181B2E",
+    paper_bgcolor:"#181B2E"
     };
   
   // Del3.6. Use Plotly to plot the gauge data and layout.
