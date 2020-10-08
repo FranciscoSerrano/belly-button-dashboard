@@ -105,7 +105,7 @@ function buildCharts(sample) {
     // 9. Create the layout for the bar chart. 
     var config = { responsive: true}
     var layout = {
-    title: { text: "Top 10 Bacteria Cultures Found", color: "white"},
+    title: { text: "Top 10 Bacteria Cultures Found", font: { color: "white"}},
     xaxis: { title: "Sample Amount", color: "white" },
     yaxis: { autorange: "reversed", color: "white" },
     plot_bgcolor:"#181B2E",
@@ -130,7 +130,7 @@ function buildCharts(sample) {
   
   // Del2.2. Create the layout for the bubble chart.
   var bubbleLayout = {
-        title:  { text: "Bacteria Cultures per Sample", color: "white"},
+        title:  { text: "Bacteria Cultures per Sample", font: { color: "white"}},
         xaxis: {
         title: "OTU ID", color: "white"
         },
@@ -151,11 +151,10 @@ function buildCharts(sample) {
       value: wfreq,
       title:{ 
         text: "Washing Frequency",
-        color: "white", 
-        font:{ size: 24}},
+        font:{ size: 24, color: "white"}},
       gauge: {
         axis: { range: [null, 10]},
-        bar: { color: "#fde725" },
+        bar: { color: "#FFFFFF" },
         steps: [
           { range: [0,2], color: "#440154"},
           { range: [2,4], color: "#31688e"},
