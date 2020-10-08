@@ -96,15 +96,14 @@ function buildCharts(sample) {
     orientation: "h",
     hoverinfo: "text",
     hovertext: otu_labels,
-    marker: {
-      color: "#5D78FF"}
+    color: "#5D78FF"
   };
   var data = [trace];
 
     // 9. Create the layout for the bar chart. 
     var config = { responsive: true}
     var layout = {
-    title: "Top 10 Bacteria Cultures Found", color: "white",
+    title: { text: "Top 10 Bacteria Cultures Found", color: "white"},
     xaxis: { title: "Sample Amount", color: "white" },
     yaxis: { autorange: "reversed", color: "white" },
     plot_bgcolor:"#181B2E",
@@ -122,13 +121,14 @@ function buildCharts(sample) {
     mode: "markers",
     marker: {
       size: sample_values,
-      color: "#5D78FF"      
+      color: [1,2,3,4,5,6,7,8,9,10],
+      colorscale: "Viridis"      
     }
   }];
   
   // Del2.2. Create the layout for the bubble chart.
   var bubbleLayout = {
-        title: "Bacteria Cultures per Sample", color: "white",
+        title:  { text: "Bacteria Cultures per Sample", color: "white"},
         xaxis: {
         title: "OTU ID", color: "white"
         },
