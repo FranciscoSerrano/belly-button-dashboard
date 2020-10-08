@@ -172,6 +172,7 @@ function buildCharts(sample) {
     width: 500,
     height: 400,
     margin: { t: 40, r: 40, l: 40, b: 40 },
+    font: { color: "white"},
     plot_bgcolor:"#181B2E",
     paper_bgcolor:"#181B2E"
     };
