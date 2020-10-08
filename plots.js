@@ -111,69 +111,61 @@ function buildCharts(sample) {
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
 
-    // Create the trace for the bubble chart.
-    var bubbleData = [
-      {
-        x: otu_ids,
-        y: sample_values,
-        text: otu_labels,
-        mode: "markers",
-        arker: {
-          size: sample_values,
-          color: [1,2,3,4,5,6,7,8,9,10],
-          colorscale: "Viridis" 
-        }
-      }
-    ];
-
-    // Create the layout for the bubble chart.
-    var bubbleLayout = {
-      title: {
-        text: "Bacteria Cultures Per Sample",
-        font: {size: 24}
-      },
-      xaxis: {title: "OTU ID"},
-      hovermode: otu_labels,
-      showlegend: false
+     // Del2.1. Create the trace for the bubble chart.
+  var bubbleData = [{
+    x: otu_ids,
+    y: sample_values,
+    text: otu_labels,
+    mode: "markers",
+    marker: {
+      size: sample_values,
+      color: [1,2,3,4,5,6,7,8,9,10],
+      colorscale: "Viridis"      
+    }
+  }];
+  
+  // Del2.2. Create the layout for the bubble chart.
+  var bubbleLayout = {
+        title: "Bacteria Cultures per Sample",
+        xaxis: {
+          title: "OTU ID"
+        },
+        automargin: true,
+        hovermode: "closest"
     };
-
-    // D2: 3. Use Plotly to plot the data with the layout.
-    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
-    
-    // 4. Create the trace for the gauge chart.
-    var gaugeData = [
-     {
-       domain: { x:[0,1], y: [0,1]},
-       value: washing_frequency,
-       title: {
-         text: "Belly Button Washing Frequency",
-         font: {size: 24}
-       },
-       type: "indicator",
-       mode: "gauge+number",
-       gauge: {
-         axis: { range: [null, 10]},
-         steps: [
+  
+  // Del2.3. Use Plotly to plot the data with the layout.
+  Plotly.newPlot("bubble", bubbleData, bubbleLayout,config)
+  
+  // Del3.4. Create the trace for the gauge chart.
+  var gaugeData = [
+    {
+      type: "indicator",
+      mode: "gauge+number",
+      value: wfreq,
+      title:{ 
+        text: "Washing Frequency", 
+        font:{ size: 24}},
+      gauge: {
+        axis: { range: [null, 10]},
+        bar: { color: "#fde725" },
+        steps: [
           { range: [0,2], color: "#440154"},
           { range: [2,4], color: "#31688e"},
           { range: [4,6], color: "#21918c"},
           { range: [6,8], color: "#35b779"},
           { range: [8,10], color: "#90d743"}
-          ],
-          bar: {color: "black"}
-       }
-     }
-    ];
-    
-    // 5. Create the layout for the gauge chart.
-    var gaugeLayout = {
-      width: 500,
-      height: 400,
-      margin: { t: 25, r: 25, l: 25, b: 25 }
+        ]}
+    }];
+      
+  // Del3.5. Create the layout for the gauge chart.
+  
+  var gaugeLayout = { 
+    width: 500,
+    height: 400,
+    margin: { t: 40, r: 40, l: 40, b: 40 }
     };
-
-    // 6. Use Plotly to plot the gauge data and layout.
-    Plotly.newPlot("gauge", gaugeData, gaugeLayout)
-
-  });
-};
+  
+  // Del3.6. Use Plotly to plot the gauge data and layout.
+  Plotly.newPlot('gauge', gaugeData, gaugeLayout, config); 
+})};
