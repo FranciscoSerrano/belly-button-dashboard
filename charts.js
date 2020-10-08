@@ -96,7 +96,9 @@ function buildCharts(sample) {
     orientation: "h",
     hoverinfo: "text",
     hovertext: otu_labels,
-    color: "#5D78FF"
+    marker: {
+      color: '#5D78FF'
+    }
   };
   var data = [trace];
 
