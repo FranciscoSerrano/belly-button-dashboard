@@ -135,6 +135,7 @@ function buildCharts(sample) {
         title: "OTU ID", color: "white"
         },
         automargin: true,
+        font: { color: "white"},
         hovermode: "closest",
         plot_bgcolor:"#181B2E",
         paper_bgcolor:"#181B2E"
@@ -152,9 +153,10 @@ function buildCharts(sample) {
       title:{ 
         text: "Washing Frequency",
         font:{ size: 24, color: "white"}},
+      font: { color: "white"},
       gauge: {
         axis: { range: [null, 10]},
-        bar: { color: "#FFFFFF" },
+        bar: { color: "#FC3995" },
         steps: [
           { range: [0,2], color: "#440154"},
           { range: [2,4], color: "#31688e"},
