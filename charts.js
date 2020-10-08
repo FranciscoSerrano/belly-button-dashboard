@@ -107,7 +107,9 @@ function buildCharts(sample) {
     var layout = {
     title: "Top 10 Bacteria Cultures Found",
     xaxis: { title: "Sample Amount" },
-    yaxis: { autorange: "reversed" }
+    yaxis: { autorange: "reversed" },
+    plot_bgcolor:"black",
+    paper_bgcolor:"#FFF3"
   };
 
     // 10. Use Plotly to plot the data with the layout. 
@@ -133,7 +135,9 @@ function buildCharts(sample) {
           title: "OTU ID"
         },
         automargin: true,
-        hovermode: "closest"
+        hovermode: "closest",
+        plot_bgcolor:"black",
+        paper_bgcolor:"#FFF3"
     };
   
   // Del2.3. Use Plotly to plot the data with the layout.
@@ -165,7 +169,9 @@ function buildCharts(sample) {
   var gaugeLayout = { 
     width: 500,
     height: 400,
-    margin: { t: 40, r: 40, l: 40, b: 40 }
+    margin: { t: 40, r: 40, l: 40, b: 40 },
+    plot_bgcolor:"black",
+    paper_bgcolor:"#FFF3"
     };
   
   // Del3.6. Use Plotly to plot the gauge data and layout.
