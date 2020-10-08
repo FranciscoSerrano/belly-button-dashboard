@@ -109,7 +109,7 @@ function buildCharts(sample) {
     xaxis: { title: "Sample Amount" },
     yaxis: { autorange: "reversed" },
     plot_bgcolor:"black",
-    paper_bgcolor:"#FFF3"
+    paper_bgcolor:"rgba(0,0,0,0)"
   };
 
     // 10. Use Plotly to plot the data with the layout. 
@@ -137,7 +137,7 @@ function buildCharts(sample) {
         automargin: true,
         hovermode: "closest",
         plot_bgcolor:"black",
-        paper_bgcolor:"#FFF3"
+        paper_bgcolor:"rgba(0,0,0,0)"
     };
   
   // Del2.3. Use Plotly to plot the data with the layout.
@@ -171,7 +171,7 @@ function buildCharts(sample) {
     height: 400,
     margin: { t: 40, r: 40, l: 40, b: 40 },
     plot_bgcolor:"black",
-    paper_bgcolor:"#FFF3"
+    paper_bgcolor:"rgba(0,0,0,0)"
     };
   
   // Del3.6. Use Plotly to plot the gauge data and layout.
