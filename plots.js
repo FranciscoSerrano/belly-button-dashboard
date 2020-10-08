@@ -47,7 +47,7 @@ function buildMetadata(sample) {
     // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
     Object.entries(result).forEach(([key, value]) => {
-      PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
+      PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);      
     });
 
   });
@@ -58,60 +58,62 @@ function buildCharts(sample) {
   // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
-    var samples = data.samples;
-    // 4. Create a variable that filters the samples for the object with the desired sample number.
-    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
-    // 1. Create a variable that filters the metadata array for the object with the desired sample number.
-    var metadata = data.metadata;
-    //  5. Create a variable that holds the first sample in the array.
-    var result = resultArray[0];
+  var allSampleID = data.samples; 
 
-    // 2. Create a variable that holds the first sample in the metadata array.
-    var resultWashFreq = metadata.filter(sampleObj => sampleObj.id == sample);
-    var result2 = resultWashFreq[0];
+    // 4. Create a variable that filters the samples for the object with the desired sample number.
+  var IDArray = allSampleID.filter(sampleObj => sampleObj.id == sample);
+
+    // Del3.1. Create a variable that filters the metadata array for the object with the desired sample number. (del3)
+  var metaArray = data.metadata.filter(sampleObj => sampleObj.id == sample);
+
+    //  5. Create a variable that holds the first sample in the array.
+  var id = IDArray[0];
+
+    // Del3.2. Create a variable that holds the first sample in the metadata array.(del3)
+  var meta = metaArray[0];  
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otu_ids = result.otu_ids;
-    var otu_labels = result.otu_labels;
-    var sample_values = result.sample_values;
-    
+  var otu_ids = id.otu_ids;
+  var otu_labels = id.otu_labels;
+  var sample_values = id.sample_values.slice(0,10);
 
-    // 3. Create a variable that holds the washing frequency.
-    var washing_frequency = result2.wfreq;
-
+    // Del3.3. Create a variable that holds the washing frequency.(del3)
+  var wfreq = parseFloat(meta.wfreq);
+  
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-    
-    var yticks = otu_ids.slice(0,10).map(otuID => ` OTU ${otuID} `).reverse();
-    console.log(result);
+
+  var otu_slice = otu_ids.slice(0,10);
+  var otu_sort = otu_slice.sort((a,b) => b - a );
+  var yticks = otu_sort.map(otu_id => "OTU " + otu_id);
 
     // 8. Create the trace for the bar chart. 
-    var barData = [
-      {
-        y: yticks,
-        x: sample_values.slice(0, 10).reverse(),
-        text: otu_labels.slice(0, 10).reverse(),
-        type: "bar",
-        orientation: "h",
-      }
-    ];
+  var trace = {
+    x: sample_values,
+    y: yticks,
+    type: "bar",
+    orientation: "h",
+    hoverinfo: "text",
+    hovertext: otu_labels,
+   // marker: {
+     // color: [1,2,3,4,5,6,7,8,9,10],
+      //colorscale: "Viridis"}
+  };
+  var data = [trace];
 
     // 9. Create the layout for the bar chart. 
-    var barLayout = {
-      title: {
-        text: "Top 10 Bacteria Cultures Found",
-        font: {size: 24}
-      },
-      autosize: true,
-      height: 400,
-      xaxis: {automargin: true},
-      yaxis: {automargin: true}
-    };
-    // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar", barData, barLayout);
+    var config = { responsive: true}
+    var layout = {
+    title: "Top 10 Bacteria Cultures Found",
+    xaxis: { title: "Sample Amount" },
+    yaxis: { autorange: "reversed" }
+  };
 
-     // Del2.1. Create the trace for the bubble chart.
+    // 10. Use Plotly to plot the data with the layout. 
+  Plotly.newPlot("bar", data,layout,config)
+  
+  // Del2.1. Create the trace for the bubble chart.
   var bubbleData = [{
     x: otu_ids,
     y: sample_values,
