@@ -97,8 +97,7 @@ function buildCharts(sample) {
     hoverinfo: "text",
     hovertext: otu_labels,
     marker: {
-      color: [1,2,3,4,5,6,7,8,9,10],
-      colorscale: "Viridis"}
+      color: "#5D78FF"}
   };
   var data = [trace];
 
@@ -123,8 +122,7 @@ function buildCharts(sample) {
     mode: "markers",
     marker: {
       size: sample_values,
-      color: [1,2,3,4,5,6,7,8,9,10],
-      colorscale: "Viridis"      
+      color: "#5D78FF"      
     }
   }];
   
